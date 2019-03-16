@@ -17,6 +17,14 @@ position = 1
 @client.event
 async def on_ready():
 	print('Wally is Ready.')
+	
+# Changes Wally's status to "Watching for !help"
+# type=1 playing
+# type=2 listening
+# type=3 watching
+@client.event
+async def on_ready():
+	await client.change_presence(game=discord.Game(name="for !help", type=3))
 
 # Discord Command "ping" to see if Wally is alive
 @client.command()
