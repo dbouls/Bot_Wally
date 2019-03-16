@@ -140,10 +140,15 @@ async def new():
 @client.command()
 async def set(number):
 	global position
-	if int(number) <= 4 and int(number) >= 0:
-		position = int(number)
+	error = 'Choose a round value (whole number) between 0 and 4'
+	if number[0].isdigit() == False:
+		await client.say(error)
+	elif len(number) >= 2:
+		await client.say(error)
+	elif int(number[0]) <= 4 and int(number[0]) >= 0:
+		position = int(number[0])
 	else:
-		await client.say('Invalid! Choose a round value between 0 and 4')
+		await client.say(error)
 	await winloss_status()
 
 # Wally Help Message
